@@ -26,7 +26,8 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const { boardId } = useParams();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [filteredBoards, setFilteredBoards] = useState(boards);
+  const [filteredBoards, setFilteredBoards] = useState(boards ? boards : []);
+  console.log(filteredBoards)
 
   const sidebarWidth = 250;
 
@@ -56,7 +57,7 @@ const Sidebar = () => {
   };
 
   const handleSearch = (searchTerm) => {
-    const filtered = boards.filter((item) =>
+    const filtered = boards?.filter((item) =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredBoards(filtered);
